@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ayomaonline.osgi</groupId>
+		<artifactId>com.ayomaonline.osgi.parent</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<artifactId>com.ayomaonline.osgi.modules</artifactId>
+	<packaging>pom</packaging>
+	<name>AyomaOnline - OSGi  - Modules</name>
+	<description>AyomaOnline - OSGi  - Modules</description>
+	<modules>
+		<module>com.ayomaonline.osgi.modules.user</module>
+		<module>com.ayomaonline.osgi.modules.message</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ayomaonline.osgi</groupId>
+			<artifactId>com.ayomaonline.osgi.main.api</artifactId>
+			<version>0.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>4.2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+			<version>4.2.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>

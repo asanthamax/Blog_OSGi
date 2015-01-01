@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ayomaonline.osgi</groupId>
+	<artifactId>com.ayomaonline.osgi.parent</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+	<name>AyomaOnline - OSGi  - Parent</name>
+	<description>AyomaOnline - OSGi  - Parent</description>
+
+	<modules>
+		<module>com.ayomaonline.osgi.main</module>
+		<module>com.ayomaonline.osgi.main.api</module>
+		<module>com.ayomaonline.osgi.modules</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.ops4j</groupId>
+				<artifactId>maven-pax-plugin</artifactId>
+				<configuration>
+					<provision>
+						<param>--platform=felix</param>
+						<param>--profiles=compendium,web,war</param>
+					</provision>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

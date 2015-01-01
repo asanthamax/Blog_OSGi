@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.ayomaonline.osgi</groupId>
+		<artifactId>com.ayomaonline.osgi.parent</artifactId>
+		<version>0.0.1</version>
+	</parent>
+
+	<artifactId>com.ayomaonline.osgi.main</artifactId>
+	<packaging>war</packaging>
+	<name>AyomaOnline - OSGi  - Main</name>
+	<description>AyomaOnline - OSGi  - Main</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ayomaonline.osgi</groupId>
+			<artifactId>com.ayomaonline.osgi.main.api</artifactId>
+			<version>0.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>4.2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+			<version>4.2.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<supportedProjectTypes>
+						<supportedProjectType>war</supportedProjectType>
+					</supportedProjectTypes>
+					<instructions>
+						<Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+						<Bundle-Name>${pom.artifactId}</Bundle-Name>
+						<Bundle-ClassPath>.,WEB-INF/classes,WEB-INF/lib/*.jar</Bundle-ClassPath>
+						<Bundle-Activator>com.ayomaonline.osgi.main.Activator</Bundle-Activator>
+						<Web-ContextPath>osgi</Web-ContextPath>
+						<Webapp-Context>osgi</Webapp-Context>
+					</instructions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.ops4j</groupId>
+				<artifactId>maven-pax-plugin</artifactId>
+				<configuration>
+					<provision>
+						<param>--platform=felix</param>
+						<param>--profiles=compendium,web,war</param>
+					</provision>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
