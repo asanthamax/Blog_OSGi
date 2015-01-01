@@ -13,7 +13,7 @@ public class Activator implements BundleActivator {
 		LOGGER = new Logger(context);
 
 		LOGGER.log(Logger.INFO, "===============================");
-		LOGGER.log(Logger.INFO, "     STARTING USER MODULE");
+		LOGGER.log(Logger.INFO, "   STARTING MESSAGE MODULE");
 		LOGGER.log(Logger.INFO, "===============================");
 
 		context.registerService(Module.class.getName(), new MessageModule(), null);
@@ -21,7 +21,7 @@ public class Activator implements BundleActivator {
 
 	public void stop(BundleContext context) throws Exception {
 		LOGGER.log(Logger.INFO, "===============================");
-		LOGGER.log(Logger.INFO, "     STOPPING USER MODULE");
+		LOGGER.log(Logger.INFO, "   STOPPING MESSAGE MODULE");
 		LOGGER.log(Logger.INFO, "===============================");
 
 		LOGGER.close();

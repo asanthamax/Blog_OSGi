@@ -17,21 +17,21 @@ public class DefaultModuleTrackerCustomizer implements ServiceTrackerCustomizer 
 	}
 
 	public Object addingService(ServiceReference reference) {
-		Activator.getApplicationLogger().log(Logger.INFO, "ADDING MODULE    : " + reference);
-
 		Module service = (Module) context.getService(reference);
+		Activator.getApplicationLogger().log(Logger.INFO, "ADDING MODULE    : " + service);
+
 		new ModuleAdder(service).start();
 		return service;
 	}
 
 	public void modifiedService(ServiceReference reference, Object service) {
-		Activator.getApplicationLogger().log(Logger.INFO, "MODIFYING MODULE : " + reference + ":" + service);
+		Activator.getApplicationLogger().log(Logger.INFO, "MODIFYING MODULE : " + service);
 		removedService(reference, service);
 		addingService(reference);
 	}
 
 	public void removedService(ServiceReference reference, Object service) {
-		Activator.getApplicationLogger().log(Logger.INFO, "REMOVING MODULE  : " + reference + ":" + service);
+		Activator.getApplicationLogger().log(Logger.INFO, "REMOVING MODULE  : " + service);
 
 		new ModuleRemover((Module) service).start();
 	}
