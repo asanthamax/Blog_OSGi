@@ -15,7 +15,7 @@
 				List<MenuItem> menuItemList = MenuItemRegistrar.getMenuItems().get(module);
 				for (MenuItem menuItem : menuItemList) {
 					%>
-						<li><a href="<%=menuItem.getPath()%>"><%=menuItem.getKey() %></a></li>
+						<li><a href="<%=module%>/<%=menuItem.getPath()%>"><%=menuItem.getKey() %></a></li>
 					<%
 				}
 			}
